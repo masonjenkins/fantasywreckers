@@ -9,8 +9,23 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     </head>
     <body>
+      <script>function btnClick() {
+        const button = document.getElementById('loginButton');
+        button.remove();
+
+        var data = { name: "Mason" };
+        var template = "Welcome back, {{ name }}";
+
+        var text = Mustache.render(template, data);
+
+        $("#loginButtonDiv").html(text)
+      } 
+      </script>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
@@ -32,7 +47,9 @@
                     <a class="nav-link" href="subscribe/index.html">Subscribe</a>
                   </li>
                 </ul>
-                  <button class="btn btn-outline-primary">Login</button>
+                  <div id="loginButtonDiv">
+                    <button onclick="btnClick()" class="btn btn-outline-primary" id="loginButton">Login</button>
+                  </div>
               </div>
             </div>
           </nav>
